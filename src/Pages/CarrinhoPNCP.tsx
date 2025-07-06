@@ -6,61 +6,23 @@ const CarrinhoPNCP: React.FC = () => {
   const carrinho = useCarrinho();
 
   return (
-    <div
-      style={{
-        maxWidth: "64rem",
-        margin: "0 auto",
-        padding: "1.5rem",
-        fontFamily: "Arial, sans-serif",
-      }}
-    >
-      <h2
-        style={{
-          fontSize: "2rem",
-          fontWeight: "bold",
-          marginBottom: "1.5rem",
-          textAlign: "center",
-        }}
-      >
-        Seu Carrinho
-      </h2>
+    <div className="max-w-4xl mx-auto p-6 font-sans">
+      <h2 className="text-3xl font-bold mb-6 text-center">Seu Carrinho</h2>
 
-      <Link to={"/"} style={{ color: "#2563eb", textDecoration: "underline" }}>
+      <Link to="/" className="text-blue-600 underline hover:text-blue-800">
         Página de Pesquisa
       </Link>
 
-      <div
-        style={{
-          marginTop: "1.5rem",
-          borderTop: "1px solid #e5e7eb",
-          paddingTop: "1rem",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <h4 style={{ fontSize: "1.25rem", fontWeight: "bold" }}>Total:</h4>
-        <span
-          style={{ fontSize: "1.5rem", color: "#16a34a", fontWeight: "bold" }}
-        >
+      <div className="mt-6 border-t pt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <h4 className="text-xl font-bold">Total:</h4>
+        <span className="text-2xl font-bold text-green-600">
           R$ {carrinho.total.toFixed(2)}
         </span>
       </div>
 
-      <div
-        style={{
-          marginTop: "1.5rem",
-          borderTop: "1px solid #e5e7eb",
-          paddingTop: "1rem",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <h4 style={{ fontSize: "1.25rem", fontWeight: "bold" }}>Media:</h4>
-        <span
-          style={{ fontSize: "1.5rem", color: "#16a34a", fontWeight: "bold" }}
-        >
+      <div className="mt-4 border-t pt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <h4 className="text-xl font-bold">Média:</h4>
+        <span className="text-2xl font-bold text-green-600">
           R${" "}
           {carrinho.itens.length > 0
             ? (carrinho.total / carrinho.itens.length).toFixed(2)
@@ -69,46 +31,20 @@ const CarrinhoPNCP: React.FC = () => {
       </div>
 
       {carrinho.itens.length === 0 ? (
-        <p style={{ textAlign: "center", color: "#6b7280" }}>
+        <p className="text-center text-gray-500 mt-6">
           Seu carrinho está vazio.
         </p>
       ) : (
         <>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "1rem",
-              marginTop: "1rem",
-            }}
-          >
+          <div className="flex flex-col gap-4 mt-6">
             {carrinho.itens.map((item) => (
               <div
                 key={item.id}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  backgroundColor: "white",
-                  padding: "1rem",
-                  borderRadius: "0.75rem",
-                  boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
-                  transition: "box-shadow 0.3s ease-in-out",
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.boxShadow =
-                    "0 4px 12px rgba(0, 0, 0, 0.15)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.boxShadow =
-                    "0 2px 6px rgba(0, 0, 0, 0.1)")
-                }
+                className="flex justify-between items-center bg-white p-4 rounded-xl shadow hover:shadow-lg transition-shadow"
               >
                 <div>
-                  <h3 style={{ fontSize: "1.125rem", fontWeight: "600" }}>
-                    {item.nome}
-                  </h3>
-                  <p style={{ fontSize: "0.875rem", color: "#6b7280" }}>
+                  <h3 className="text-lg font-semibold">{item.nome}</h3>
+                  <p className="text-sm text-gray-500">
                     {(item.preco * item.quantidade).toLocaleString("pt-BR", {
                       style: "currency",
                       currency: "BRL",
@@ -118,21 +54,7 @@ const CarrinhoPNCP: React.FC = () => {
                 </div>
                 <button
                   onClick={() => carrinho.removerItem(item.id)}
-                  style={{
-                    backgroundColor: "#ef4444",
-                    color: "white",
-                    padding: "0.5rem 0.75rem",
-                    borderRadius: "0.5rem",
-                    border: "none",
-                    cursor: "pointer",
-                    transition: "background-color 0.3s ease-in-out",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.backgroundColor = "#dc2626")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.backgroundColor = "#ef4444")
-                  }
+                  className="bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600 transition-colors"
                 >
                   Remover
                 </button>
@@ -140,30 +62,10 @@ const CarrinhoPNCP: React.FC = () => {
             ))}
           </div>
 
-          <div
-            style={{
-              marginTop: "1.5rem",
-              display: "flex",
-              justifyContent: "flex-end",
-            }}
-          >
+          <div className="mt-6 flex justify-end">
             <button
               onClick={carrinho.limparCarrinho}
-              style={{
-                backgroundColor: "#1f2937",
-                color: "white",
-                padding: "0.5rem 1.25rem",
-                borderRadius: "0.5rem",
-                border: "none",
-                cursor: "pointer",
-                transition: "background-color 0.3s ease-in-out",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.backgroundColor = "#111827")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.backgroundColor = "#1f2937")
-              }
+              className="bg-gray-800 text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-colors"
             >
               Limpar Carrinho
             </button>
