@@ -33,14 +33,15 @@ const ConsultaPNCP: React.FC = () => {
     <div className="px-4 py-10 max-w-screen-lg mx-auto font-sans">
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
         <h1 className="text-3xl font-bold text-gray-800">Licitações PNCP</h1>
-        <div className="text-sm text-gray-700">
+        <div className="flex items-center text-2xl text-gray-700">
           <span>Itens no carrinho: </span>
-          <span className="font-bold">{quantidadeCarrinho.itens.length}</span>
-          <Link
-            to="/carrinho"
-            className="ml-4 text-blue-600 hover:underline font-semibold"
-          >
-            Ver carrinho
+          <span className="font-bold mr-2 ml-2">
+            {quantidadeCarrinho.itens.length}
+          </span>
+          <Link to="/carrinho" className="ml-4 text-blue-600 font-semibold">
+            <div className="flex items-center justify-center bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors">
+              <span>Ver carrinho</span>
+            </div>
           </Link>
         </div>
       </div>
