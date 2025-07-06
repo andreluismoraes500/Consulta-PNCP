@@ -38,7 +38,7 @@ const ConsultaPNCP: React.FC = () => {
           <span className="font-bold mr-2 ml-2">
             {quantidadeCarrinho.itens.length}
           </span>
-          <Link to="/carrinho" className="ml-4 text-blue-600 font-semibold">
+          <Link to="/carrinho" className="ml-2 md:ml-8 font-semibold">
             <div className="flex items-center justify-center bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors">
               <span>Ver carrinho</span>
             </div>
