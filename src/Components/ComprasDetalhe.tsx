@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useCarrinho } from "../Context/Context";
+import { toast } from "react-toastify";
 
 interface OrgaoEntidade {
   cnpj: string;
@@ -74,6 +75,7 @@ const ComprasDetalhe: React.FC<ComprasDetalheProps> = ({ url }) => {
   const carrinho = useCarrinho();
 
   const handleCarrinho = (preco: number, nome: string) => {
+    toast("Adicionado ao carrinho", { type: "info", autoClose: 1500 });
     carrinho.adicionarItem({ nome, preco });
   };
 
