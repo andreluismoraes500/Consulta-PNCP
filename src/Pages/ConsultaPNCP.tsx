@@ -4,6 +4,7 @@ import { type ItemPNCP } from "../Components/types";
 import ComprasDetalhe from "../Components/ComprasDetalhe";
 import { useCarrinho } from "../Context/Context";
 import { Link } from "react-router-dom";
+import DownloadsArquivos from "../Components/DownloadsArquivos";
 
 const ConsultaPNCP: React.FC = () => {
   const [dados, setDados] = useState<ItemPNCP[]>([]);
@@ -111,6 +112,10 @@ const ConsultaPNCP: React.FC = () => {
 
             <ComprasDetalhe
               url={`https://pncp.gov.br/api/consulta/v1/orgaos/${item.orgao_cnpj}/compras/${item.ano}/${item.numero_sequencial}`}
+            />
+
+            <DownloadsArquivos
+              url={`https://pncp.gov.br/api/pncp/v1/orgaos/${item.orgao_cnpj}/compras/${item.ano}/${item.numero_sequencial}/arquivos`}
             />
 
             <a
